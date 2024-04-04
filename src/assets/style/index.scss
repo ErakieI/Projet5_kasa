@@ -1,0 +1,21 @@
+body {
+  max-width: 1240px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+.errorPage {
+  width: 100%;
+}
+@media all and (min-width: 1240px) {
+  body {
+    width: 1240px;
+  }
+  .errorPage,
+  .gallery,
+  .home,
+  .about {
+    width: 1240px;
+  }
+}
