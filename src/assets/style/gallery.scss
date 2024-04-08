@@ -1,4 +1,5 @@
-.gallery{
+@import 'index';
+.gallery {
     width: 100%;
     background-color: #F6F6F6;
     border-radius: 25px;
@@ -7,30 +8,47 @@
     justify-content: space-around;
     align-items: center;
     margin: 20px 0;
+    a {
+        text-decoration: inherit;
+    }
 }
-
-.location {
+.housing {
     width: 340px;
     height: 340px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(10, 10, 10, 0) 42%, rgba(4, 4, 4, 0.205) 99.99%, rgba(0, 0, 0, 0.5) 100%);
     border-radius: 10px;
-    background-color: #FF6060;
+    background-color: $orangeKasa;
     margin: 30px;
     color: white;
     display: flex;
-    align-items: end;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
     span {
-        padding: 20px;
-        font-family: Montserrat;
+        height: 30%;
+        padding-left: 20px;
         font-size: 18px;
         font-weight: 700;
         line-height: 25.67px;
+        align-self: baseline;
+        display: flex;
+        align-items: center;
+    }
+    img {
+        width: 100%;
+        height: 70%;
+        border-radius: 10px 10px 0 0;
+        object-fit: cover;
     }
 }
-@media all and (max-width: 768px) {
-.location {
-    width: 335px;
-    height: 255px;
-}
+@media all and (max-width: 720px) {
+    .gallery {
+        background-color: white;
+    }
+    .housing {
+        width: 335px;
+        height: 255px;
+        margin: 10px 0;
+    }
 }
   

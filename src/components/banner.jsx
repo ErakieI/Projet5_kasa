@@ -6,7 +6,7 @@ function Banner() {
     <div className="banner">
         <div className='filter'></div>
         <div className="banner-content">
-        <h1>Chez vous, partout et ailleurs</h1>
+        <h1>Chez vous,<br/> partout et ailleurs</h1>
       </div>
     </div>
   );

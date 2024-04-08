@@ -1,9 +1,11 @@
+$orangeKasa: #ff6060;
 body {
   max-width: 1240px;
   width: 100%;
   display: flex;
   justify-content: center;
   margin: auto;
+  font-family: Montserrat;
 }
 .errorPage {
   width: 100%;
@@ -17,5 +19,11 @@ body {
   .home,
   .about {
     width: 1240px;
+  }
+}
+
+@media all and (max-width: 1240px) {
+  body {
+    width: 90%;
   }
 }
