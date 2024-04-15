@@ -1,12 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import InfosCards from './infosCards'
 import RatingStars from './ratingStars'
-import '../assets/style/housingInfos.scss'
+import locationsData from '../data/cards.json'
+import Error from '../pages/error'
 
-function HousingInfos({ locations }) {
+function HousingInfos() {
+
   const { id } = useParams()
-  const location = locations.find((location) => location.id === id)
+  const [location, setLogement] = useState({
+    tags: [],
+    equipments: [],
+    pictures: [],
+    rating: "",
+    host: {name: "", picture: ""},
+  });
+
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const isHomeValid = locationsData.some((logement) => logement.id === id);
+    if (!isHomeValid) {
+      setError(true);
+    } else {
+      locationsData.map((logement) => {
+        if (logement.id === id) {
+          setLogement(logement);
+        }
+        return null;
+      });
+    }
+  }, [id]);
+
+  if (error) {
+    return <Error/>;
+  }
+
+  if (location.id === undefined) {
+    return <Error/>;
+  }
 
   return (
     <div className="locationDetail">

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import '../assets/style/infosCards.scss'
 
 function InfosCards({ title, description }) {
   const [descriptionVisible, setDescriptionVisible] = useState(false)

@@ -1,4 +1,3 @@
-// Coder une fonction React qui boucle chaque étoile et qui attribue la classe 'full' tant que la variable {rating} est < la boucle [i], sinon : 'empty'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 

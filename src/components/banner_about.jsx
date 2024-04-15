@@ -1,9 +1,8 @@
 import React from 'react'
-import '../assets/style/banner.scss'
 
 function Banner() {
   return (
-    <div className="banner banner2">
+    <div className="banner banner_about">
       <div className="filter"></div>
     </div>
   )

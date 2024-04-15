@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom'
-import '../assets/style/navbar.scss'
 import logo from '../assets/images/LOGO_desktop.png'
 
 function Navbar() {
