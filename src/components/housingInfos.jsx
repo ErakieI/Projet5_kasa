@@ -4,45 +4,48 @@ import InfosCards from './infosCards'
 import RatingStars from './ratingStars'
 import locationsData from '../data/cards.json'
 import Error from '../pages/error'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 function HousingInfos() {
-
   const { id } = useParams()
-  const [location, setLogement] = useState({
-    tags: [],
-    equipments: [],
-    pictures: [],
-    rating: "",
-    host: {name: "", picture: ""},
-  });
-
-  const [error, setError] = useState(false);
+  const [location, setLocation] = useState(null)
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
-    const isHomeValid = locationsData.some((logement) => logement.id === id);
-    if (!isHomeValid) {
-      setError(true);
+    const home = locationsData.find((logement) => logement.id === id)
+    if (home) {
+      setLocation(home)
     } else {
-      locationsData.map((logement) => {
-        if (logement.id === id) {
-          setLogement(logement);
-        }
-        return null;
-      });
+      setError(true)
     }
-  }, [id]);
+  }, [id])
 
-  if (error) {
-    return <Error/>;
+  const previousPhoto = () => {
+    setCurrentPhotoIndex((prevIndex) => (prevIndex === 0 ? location.pictures.length - 1 : prevIndex - 1))
   }
 
-  if (location.id === undefined) {
-    return <Error/>;
+  const nextPhoto = () => {
+    setCurrentPhotoIndex((prevIndex) => (prevIndex === location.pictures.length - 1 ? 0 : prevIndex + 1))
+  }
+
+  if (error || !location) {
+    return <Error />
   }
 
   return (
     <div className="locationDetail">
-      <img src={location.cover} alt={location.title} />
+      <div className="photoContainer">
+        <img src={location.pictures[currentPhotoIndex]} alt={location.title} />
+        <div className="navButton">
+          <FontAwesomeIcon icon={faChevronLeft} className="left" onClick={previousPhoto} />
+          <FontAwesomeIcon icon={faChevronRight} className="right" onClick={nextPhoto} />
+        </div>
+        <div className="photoCounter">
+          {currentPhotoIndex + 1} / {location.pictures.length}
+        </div>
+      </div>
       <div className="locationHosting">
         <div className="geolocTags">
           <h2>{location.title}</h2>
@@ -60,7 +63,7 @@ function HousingInfos() {
             <p>{location.host.name}</p>
             <img src={location.host.picture} alt="Profil de l'hébergeur" />
           </div>
-          <div className='ratingStars'>
+          <div className="ratingStars">
             <RatingStars rating={location.rating} />
           </div>
         </div>

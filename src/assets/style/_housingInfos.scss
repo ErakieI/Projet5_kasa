@@ -1,11 +1,42 @@
 .home {
   width: 100%;
   .locationDetail {
-    img {
-      width: 100%;
-      height: 415px;
-      object-fit: cover;
-      border-radius: 25px;
+    .photoContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .navButton {
+        width: 85%;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        color: white;
+        z-index: 1;
+        svg {
+          height: 50px;
+        }
+      }
+      .photoCounter {
+        display: flex;
+        position: absolute;
+        color: white;
+        align-self: flex-end;
+        padding-bottom: 20px;
+        user-select: none;
+      }
+      .left {
+        left: 10px;
+      }
+      .right {
+        right: 10px;
+      }
+      img {
+        width: 100%;
+        height: 415px;
+        object-fit: cover;
+        border-radius: 25px;
+        user-select: none;
+      }
     }
     .locationHosting {
       display: flex;
@@ -61,9 +92,9 @@
         .ratingStars {
           margin-top: 10px;
           svg {
-              width: 24px;
-              height: 24px;
-              margin-right: 5px;
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
           }
           .full {
             color: $orangeKasa;
@@ -99,74 +130,81 @@
 }
 
 @media all and (max-width: 720px) {
-  .locationDetail {
-    img {
-      height: 250px;
-    }
-    .locationHosting {
-      display: flex;
-      flex-direction: column;
-      h2 {
-        font-size: 24px;
-        margin-top: 0;
-        line-height: 30px;
-      }
-      .geoloc {
-        font-size: 16px;
-      }
-      .tags {
-        ul {
-          width: 90%;
-          margin: 5px 0;
-          display: flex;
-          flex-wrap: wrap;
-          li {
-            font-size: 10px;
-            border-radius: 7px;
-          }
-        }
-      }
-      .host {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        align-items: center;
-        .profil {
-          p {
-            font-size: 14px;
-          }
+  .home {
+    .locationDetail {
+      .photoContainer {
+        .photoCounter {
+          display: none;
           img {
-            width: 32px;
-            height: 32px;
-          }
-        }
-        .ratingStars {
-          margin-top: 0;
-          svg {
-            width: 18px;
-            height: 18px;
+            height: 250px;
           }
         }
       }
-    }
-    .infoCards {
-      display: flex;
-      flex-direction: column;
-      .qualityCards {
-        width: 100%;
-        align-items: center;
-        margin-top: 5px;
-        margin-bottom: 15px;
-        .quality {
-          height: 32px;
-          margin: 0;
-          h2 {
-            font-size: 15px;
-            line-height: normal;
+      .locationHosting {
+        display: flex;
+        flex-direction: column;
+        h2 {
+          font-size: 24px;
+          margin-top: 0;
+          line-height: 30px;
+        }
+        .geoloc {
+          font-size: 16px;
+        }
+        .tags {
+          ul {
+            width: 90%;
+            margin: 5px 0;
+            display: flex;
+            flex-wrap: wrap;
+            li {
+              font-size: 10px;
+              border-radius: 7px;
+            }
           }
-          svg {
-            width: 20px;
-            height: 20px;
+        }
+        .host {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          align-items: center;
+          .profil {
+            p {
+              font-size: 14px;
+            }
+            img {
+              width: 32px;
+              height: 32px;
+            }
+          }
+          .ratingStars {
+            margin-top: 0;
+            svg {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+      }
+      .infoCards {
+        display: flex;
+        flex-direction: column;
+        .qualityCards {
+          width: 100%;
+          align-items: center;
+          margin-top: 5px;
+          margin-bottom: 15px;
+          .quality {
+            height: 32px;
+            margin: 0;
+            h2 {
+              font-size: 15px;
+              line-height: normal;
+            }
+            svg {
+              width: 20px;
+              height: 20px;
+            }
           }
         }
       }

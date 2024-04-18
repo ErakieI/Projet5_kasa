@@ -4,7 +4,6 @@ import HousingInfos from '../components/housingInfos'
 import Error from '../pages/error'
 import Home from '../pages/home'
 import About from '../pages/about'
-import '../assets/style/main-prefixed-min.css'
 
 const Router = () => {
   return (

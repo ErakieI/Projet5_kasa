@@ -1,10 +1,14 @@
 import Gallery from '../components/gallery'
-import Banner from '../components/banner'
 
 function Home() {
   return (
     <div className="home">
-      <Banner />
+    <div className="banner">
+        <div className='filter'></div>
+        <div className="banner-content">
+        <h1>Chez vous,<br/> partout et ailleurs</h1>
+      </div>
+    </div>
       <Gallery />
     </div>
   )

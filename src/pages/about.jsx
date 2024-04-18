@@ -1,11 +1,12 @@
 import React from 'react'
-import Banner_about from '../components/banner_about'
 import InfosCards from '../components/infosCards'
 
 function About() {
   return (
     <div className="about">
-      <Banner_about />
+        <div className="banner banner_about">
+          <div className="filter"></div>
+        </div>
       <InfosCards
         title="Fiabilité"
         description="Les annonces postées sur Kasa garantissent une fiabilité totale. Les photos sont conformes aux logements, et toutes les informations sont régulièrement vérifiées par nos équipes"
