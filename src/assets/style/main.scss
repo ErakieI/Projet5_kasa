@@ -1,8 +1,8 @@
-@import './index';
-@import './banner';
-@import './error';
-@import './footer';
-@import './gallery';
-@import './housingInfos';
-@import './infosCards';
-@import './navbar';
+@import './base/index';
+@import './components/banner';
+@import './components/footer';
+@import './components/gallery';
+@import './components/housingInfos';
+@import './components/infosCards';
+@import './components/navbar';
+@import './pages/error';
