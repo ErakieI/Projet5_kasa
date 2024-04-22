@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 function Error() {
+  console.log("Page Error chargée")
   return (
     <div className="errorPage">
       <div className="error">
