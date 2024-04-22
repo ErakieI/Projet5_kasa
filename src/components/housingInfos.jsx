@@ -6,6 +6,7 @@ import locationsData from '../data/cards.json'
 import Error from '../pages/error'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+
 function HousingInfos() {
   const { id } = useParams()
   const [location, setLocation] = useState({
@@ -16,25 +17,35 @@ function HousingInfos() {
     title: '',
     host: { name: '', picture: '' },
     location: ''
-})
+  })
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
+    setIsLoading(true)
     const home = locationsData.find((logement) => logement.id === id)
     if (home) {
       setLocation(home)
-    } 
-    
+    }
+    setIsLoading(false)
   }, [id])
-  console.log("Location :", location)
-  if (location.id === undefined) {
+
+  if (location === undefined) {
     return <Error />
   }
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
   const previousPhoto = () => {
     setCurrentPhotoIndex((prevIndex) => (prevIndex === 0 ? location.pictures.length - 1 : prevIndex - 1))
   }
+
   const nextPhoto = () => {
     setCurrentPhotoIndex((prevIndex) => (prevIndex === location.pictures.length - 1 ? 0 : prevIndex + 1))
   }
+
   return (
     <div className="locationDetail">
       <div className="photoContainer">
