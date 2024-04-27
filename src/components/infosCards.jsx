@@ -11,12 +11,12 @@ function InfosCards({ title, description }) {
 
   return (
     <div className="qualityCards">
-      <div className={`quality ${descriptionVisible ? 'rotate180' : ''}`}>
+      <div className={`quality ${descriptionVisible ? 'rotate180' : ''}`}
+        onClick={toggleDescription}>
         <h2>{title}</h2>
         <FontAwesomeIcon
           icon={faAngleDown}
           className="arrow"
-          onClick={toggleDescription}
         />
       </div>
       <div className={`description ${descriptionVisible ? 'visible' : ''}`}>
