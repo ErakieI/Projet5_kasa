@@ -1,25 +1,29 @@
-import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 function InfosCards({ title, description }) {
-  const [descriptionVisible, setDescriptionVisible] = useState(false)
+  const [descriptionVisible, setDescriptionVisible] = useState(false);
 
   const toggleDescription = () => {
-    setDescriptionVisible(!descriptionVisible)
-  }
+    setDescriptionVisible(!descriptionVisible);
+  };
 
   return (
     <div className="qualityCards">
-      <div className="quality">
+      <div className={`quality ${descriptionVisible ? 'rotate180' : ''}`}>
         <h2>{title}</h2>
-        <FontAwesomeIcon icon={descriptionVisible ? faAngleDown : faAngleUp} onClick={toggleDescription} />
+        <FontAwesomeIcon
+          icon={faAngleDown}
+          className="arrow"
+          onClick={toggleDescription}
+        />
       </div>
       <div className={`description ${descriptionVisible ? 'visible' : ''}`}>
         <p>{description}</p>
       </div>
     </div>
-  )
+  );
 }
 
-export default InfosCards
+export default InfosCards;

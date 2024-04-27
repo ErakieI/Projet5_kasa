@@ -1,16 +1,8 @@
-import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import cardsData from '../data/cards.json'
 
 function Gallery() {
-  const [cardsData, setCardsData] = useState([])
-
-  useEffect(() => {
-    fetch('/cards.json')
-      .then((response) => response.json())
-      .then((data) => setCardsData(data))
-      .catch((error) => console.error('Erreur lors du chargement des données :', error))
-  }, [])
-
+ 
   return (
     <div className="gallery">
       {cardsData.map((card, index) => (

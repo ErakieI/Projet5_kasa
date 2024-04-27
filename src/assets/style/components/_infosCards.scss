@@ -1,77 +1,90 @@
+@keyframes rotateArrow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
 .qualityCards {
-    margin: auto;
-    width: 80%;
+  margin: auto;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  .quality {
+    width: 100%;
+    height: 52px;
+    background-color: $orangeKasa;
+    color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    flex-direction: column;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 0 20px;
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 34.22px;
+    }
+  }
+  .description {
+    width: 100%;
+    background-color: #f6f6f6;
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 6s ease-out;
+    &.visible {
+      max-height: 1000px;
+      li {
+        list-style-type: none;
+      }
+    }
+    &:not(.visible) {
+      transition: none;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  .quality.rotate180 .arrow {
+    transform: rotate(180deg);
+  }
+}
+@media all and (max-width: 720px) {
+  .qualityCards {
+    width: 90%;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
     .quality {
-      width: 100%;
-      height: 52px;
-      background-color: $orangeKasa;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-      border-radius: 5px;
-      padding: 0 20px;
-        svg {
-            width: 30px;
-            height: 30px;
-        }
-        h2 {       
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 34.22px;
+      height: 32px;
+      margin: 0;
+      h2 {
+        font-size: 15px;
+        line-height: normal;
+      }
+      svg {
+        width: 20px;
+        height: 20px;
       }
     }
     .description {
-      width: 100%;
-      background-color: #f6f6f6;
-      padding: 0 20px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 6s ease-out;
-      &.visible {
-        max-height: 1000px;
-        li {
-          list-style-type: none;
-        }
-      }
-      &:not(.visible) {
-        transition: none;
-      }
       p {
-        font-size: 16px;
-      }
-    } 
-  }
-
-  @media all and (max-width: 720px) {
-    .qualityCards {
-      width: 90%;
-      align-items: center;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      .quality {
-        height: 32px;
-        margin: 0;
-        h2 {
-          font-size: 15px;
-          line-height: normal;
-        }
-        svg {
-          width: 20px;
-          height: 20px;
-        }
-      }
-      .description {
-        p {
-          font-size: 12px;
-        }
+        font-size: 12px;
       }
     }
   }
-  
+}
