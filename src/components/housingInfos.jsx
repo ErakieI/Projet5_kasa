@@ -9,15 +9,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 
 function HousingInfos() {
   const { id } = useParams()
-  const [location, setLocation] = useState({
-    tags: [],
-    equipments: [],
-    pictures: [],
-    rating: '',
-    title: '',
-    host: { name: '', picture: '' },
-    location: ''
-  })
+  const [location, setLocation] = useState(null)
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -30,12 +22,12 @@ function HousingInfos() {
     setIsLoading(false)
   }, [id])
 
-  if (location === undefined) {
-    return <Error />
-  }
-
   if (isLoading) {
     return <div>Loading...</div>
+  }
+
+  if (!location) {
+    return <Error />
   }
 
   const previousPhoto = () => {
@@ -50,10 +42,12 @@ function HousingInfos() {
     <div className="locationDetail">
       <div className="photoContainer">
         <img src={location.pictures[currentPhotoIndex]} alt={location.title} />
-        <div className="navButton">
-          <FontAwesomeIcon icon={faChevronLeft} className="left" onClick={previousPhoto} />
-          <FontAwesomeIcon icon={faChevronRight} className="right" onClick={nextPhoto} />
-        </div>
+        {location.pictures.length > 1 && (
+          <div className="navButton">
+            <FontAwesomeIcon icon={faChevronLeft} className="left" onClick={previousPhoto} />
+            <FontAwesomeIcon icon={faChevronRight} className="right" onClick={nextPhoto} />
+          </div>
+        )}
         <div className="photoCounter">
           {currentPhotoIndex + 1} / {location.pictures.length}
         </div>
@@ -91,6 +85,7 @@ function HousingInfos() {
       </div>
     </div>
   )
+  
 }
 
 export default HousingInfos
